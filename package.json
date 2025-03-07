@@ -2,7 +2,14 @@
   "name": "@monorepo-angular/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "nx": "nx",
+    "start": "nx serve crm",
+    "build": "nx build crm",
+    "test": "nx test crm",
+    "lint": "nx lint crm",
+    "e2e": "nx e2e crm-e2e"
+  },
   "private": true,
   "dependencies": {
     "@angular/animations": "~19.1.0",
