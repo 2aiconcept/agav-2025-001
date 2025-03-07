@@ -1,13 +1,23 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { NxWelcomeComponent } from './nx-welcome.component';
+import { UiComponent } from '@monorepo-angular/ui';
+import { VerticalNavbarComponent } from '@monorepo-angular/ui';
 
 @Component({
-  imports: [NxWelcomeComponent, RouterModule],
+  imports: [UiComponent, RouterModule, VerticalNavbarComponent],
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  title = 'my-app';
+  navItems = [
+    {
+      route: 'customers',
+      label: 'Customers'
+    },
+    {
+      route: 'orders',
+      label: 'Orders'
+    }
+  ]
 }

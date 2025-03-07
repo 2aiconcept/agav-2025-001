@@ -22,7 +22,10 @@
             "input": "my-app/public"
           }
         ],
-        "styles": ["my-app/src/styles.scss"],
+        "styles": [
+          "my-app/src/styles.scss",
+          "node_modules/bootstrap/dist/css/bootstrap.min.css"
+        ],
         "scripts": []
       },
       "configurations": {
