@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Component, inject } from '@angular/core';
+import { Router, RouterModule } from '@angular/router';
 import { UiComponent } from '@monorepo-angular/ui';
 import { VerticalNavbarComponent } from '@monorepo-angular/ui';
 import * as dayjs from 'dayjs';
@@ -12,6 +12,7 @@ import * as moment from 'moment';
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
+  router = inject(Router);
   public date = moment().format('DD/MM/YYYY');
   public date2 = dayjs().format('DD/MM/YYYY');
   navItems = [
@@ -24,4 +25,10 @@ export class AppComponent {
       label: 'Orders',
     },
   ];
+  goToSignIn() {
+    this.router.navigate(['auth', 'sign-in']);
+  }
+  goToSignUp() {
+    this.router.navigate(['auth', 'sign-up']);
+  }
 }

@@ -1,0 +1,11 @@
+{
+  "users": [
+    {
+      "email": "christophegueroult@gmail.com",
+      "password": "$2a$10$ow0sU30DG4tJwP7ny4Kcn.Lb97wY3lEMXHJo8SeHwbF6kDk10srOS",
+      "id": 1
+    }
+  ],
+  "customers": [],
+  "orders": []
+}
