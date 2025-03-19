@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { UiComponent } from '@monorepo-angular/ui';
 import { VerticalNavbarComponent } from '@monorepo-angular/ui';
+import * as dayjs from 'dayjs';
+import * as moment from 'moment';
 
 @Component({
   imports: [UiComponent, RouterModule, VerticalNavbarComponent],
@@ -10,14 +12,16 @@ import { VerticalNavbarComponent } from '@monorepo-angular/ui';
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
+  public date = moment().format('DD/MM/YYYY');
+  public date2 = dayjs().format('DD/MM/YYYY');
   navItems = [
     {
       route: 'customers',
-      label: 'Customers'
+      label: 'Customers',
     },
     {
       route: 'orders',
-      label: 'Orders'
-    }
-  ]
+      label: 'Orders',
+    },
+  ];
 }

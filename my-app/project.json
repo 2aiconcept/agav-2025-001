@@ -30,6 +30,12 @@
       },
       "configurations": {
         "production": {
+          "sourceMap": {
+            "scripts": true,
+            "styles": false,
+            "hidden": false,
+            "vendor": false
+          },
           "budgets": [
             {
               "type": "initial",
@@ -40,6 +46,11 @@
               "type": "anyComponentStyle",
               "maximumWarning": "4kb",
               "maximumError": "8kb"
+            },
+            {
+              "type": "allScript",
+              "maximumWarning": "2mb",
+              "maximumError": "3mb"
             }
           ],
           "outputHashing": "all"
