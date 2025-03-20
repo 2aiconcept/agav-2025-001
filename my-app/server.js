@@ -1,9 +1,13 @@
 const jsonServer = require('json-server');
 const auth = require('json-server-auth');
+const cors = require('cors');
 
 const server = jsonServer.create();
 const router = jsonServer.router('mock_db/db.json');
 const middlewares = jsonServer.defaults();
+
+// Active CORS
+server.use(cors());
 
 // Routes protégées par l'authentification
 server.db = router.db; // Permet à json-server-auth d'accéder à la base

@@ -1,11 +1,55 @@
 {
   "users": [
     {
-      "email": "christophegueroult@gmail.com",
-      "password": "$2a$10$ow0sU30DG4tJwP7ny4Kcn.Lb97wY3lEMXHJo8SeHwbF6kDk10srOS",
-      "id": 1
+      "email": "contact@2ai-group.com",
+      "password": "$2a$10$mr2pdbA2JUk2ZNymAiy5.OW1BcPysbiKzIz9eg7Smxc/G9sMVIdYi",
+      "id": 2
     }
   ],
-  "customers": [],
-  "orders": []
+  "customers": [
+    {
+      "id": "1hhs",
+      "state": "ACTIVE",
+      "name": "Modis",
+      "contact": "contact@modis.io"
+    },
+    {
+      "state": "ACTIVE",
+      "name": "Capgemini",
+      "contact": "contact@capgemini.io",
+      "id": "35sl0Lu"
+    }
+  ],
+  "orders": [
+    {
+      "id": "d453",
+      "unitPrice": 500,
+      "nbOfDays": 2,
+      "vat": 20,
+      "state": "CONFIRMED",
+      "type": "formation",
+      "customer": "capgemini",
+      "comment": "un commentaire"
+    },
+    {
+      "unitPrice": 500,
+      "nbOfDays": 2,
+      "vat": 20,
+      "state": "CONFIRMED",
+      "type": "formation",
+      "customer": "capgemini",
+      "comment": "un commentaire",
+      "id": "egtd-yj"
+    },
+    {
+      "unitPrice": 500,
+      "nbOfDays": 2,
+      "vat": 20,
+      "state": "CANCELED",
+      "type": "formation",
+      "customer": "Atos",
+      "comment": "un commentaire",
+      "id": "AhwdCIP"
+    }
+  ]
 }
