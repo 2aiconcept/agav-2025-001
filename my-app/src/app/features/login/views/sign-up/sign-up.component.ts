@@ -7,11 +7,11 @@ import {
 } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import * as AuthActions from '../../auth-store/auth.actions';
-
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-sign-up',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, NgIf],
   templateUrl: './sign-up.component.html',
   styleUrl: './sign-up.component.css',
 })

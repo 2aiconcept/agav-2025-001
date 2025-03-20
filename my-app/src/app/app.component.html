@@ -1,12 +1,19 @@
 <lib-ui title="mon titre">
   <div class="tr-connect">
-    <button type="button" class="btn btn-primary me-3" (click)="goToSignIn()">
-      Login
-    </button>
-    <button type="button" class="btn btn-secondary" (click)="goToSignUp()">
-      Sign up
-    </button>
-    <button type="button" class="btn btn-secondary" (click)="signOut()">
+    <ng-template #notAuthenticated>
+      <button type="button" class="btn btn-primary me-3" (click)="goToSignIn()">
+        Login
+      </button>
+      <button type="button" class="btn btn-secondary" (click)="goToSignUp()">
+        Sign up
+      </button>
+    </ng-template>
+    <button
+      type="button"
+      class="btn btn-secondary"
+      *ngIf="isAuthenticated$ | async; else notAuthenticated"
+      (click)="signOut()"
+    >
       Log Out
     </button>
     <p>Date avec moment : {{ date }}</p>

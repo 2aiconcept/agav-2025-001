@@ -7,9 +7,12 @@ import * as moment from 'moment';
 import { AuthService } from './features/login/auth.service';
 import { Store } from '@ngrx/store';
 import * as AuthActions from './features/login/auth-store/auth.actions';
+import { selectIsAuthenticated } from './features/login/auth-store/auth.selectors';
+import { Observable } from 'rxjs';
+import { AsyncPipe, NgIf } from '@angular/common';
 
 @Component({
-  imports: [UiComponent, RouterModule, VerticalNavbarComponent],
+  imports: [UiComponent, RouterModule, VerticalNavbarComponent, AsyncPipe, NgIf],
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
@@ -20,6 +23,10 @@ export class AppComponent {
   authService = inject(AuthService);
   public date = moment().format('DD/MM/YYYY');
   public date2 = dayjs().format('DD/MM/YYYY');
+  // Observable pour savoir si l'utilisateur est connecté
+  isAuthenticated$: Observable<boolean> = this.store.select(
+    selectIsAuthenticated
+  );
   navItems = [
     {
       route: 'customers',
