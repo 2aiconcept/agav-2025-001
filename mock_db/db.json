@@ -4,6 +4,11 @@
       "email": "contact@2ai-group.com",
       "password": "$2a$10$mr2pdbA2JUk2ZNymAiy5.OW1BcPysbiKzIz9eg7Smxc/G9sMVIdYi",
       "id": 2
+    },
+    {
+      "email": "christophegueroult@gmail.com",
+      "password": "$2a$10$bIuKZ3pUsNkZHUQzFQQy9OHnuVlJESAIG3tX5J6Nmwqs1Rm1rpRFO",
+      "id": 3
     }
   ],
   "customers": [

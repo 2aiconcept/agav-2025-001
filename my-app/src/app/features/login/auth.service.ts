@@ -14,17 +14,10 @@ export class AuthService {
 
   // signup
   signUp(item: any): Observable<any> {
-    return this.http.post(`${this.url}/register`, item).pipe(
-      tap((data) => {
-        if (data) {
-          this.router.navigate(['auth/sign-in']);
-        }
-      })
-    );
+    return this.http.post(`${this.url}/register`, item);
   }
 
   // signin
-
   public signIn(credentials: {
     email: string;
     password: string;
