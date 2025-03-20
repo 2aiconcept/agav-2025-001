@@ -1,4 +1,5 @@
 import { Route } from '@angular/router';
+import { authGuard } from './features/login/auth.guard';
 
 export const appRoutes: Route[] = [
   { path: '', redirectTo: '/auth/sign-in', pathMatch: 'full' },
@@ -11,11 +12,13 @@ export const appRoutes: Route[] = [
     path: 'orders',
     loadChildren: () =>
       import('./features/orders/orders.routes').then((m) => m.routes),
+    canActivate: [authGuard],
   },
   {
     path: 'customers',
     loadChildren: () =>
       import('./features/customers/customers.routes').then((m) => m.routes),
+    canActivate: [authGuard],
   },
   {
     path: '**',
