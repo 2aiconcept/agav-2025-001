@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { UiComponent } from '@monorepo-angular/ui';
 import { VerticalNavbarComponent } from '@monorepo-angular/ui';
@@ -12,10 +12,17 @@ import { Observable } from 'rxjs';
 import { AsyncPipe, NgIf } from '@angular/common';
 
 @Component({
-  imports: [UiComponent, RouterModule, VerticalNavbarComponent, AsyncPipe, NgIf],
+  imports: [
+    UiComponent,
+    RouterModule,
+    VerticalNavbarComponent,
+    AsyncPipe,
+    NgIf,
+  ],
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
   router = inject(Router);

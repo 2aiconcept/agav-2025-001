@@ -8,7 +8,7 @@ export interface OrdersState {
 }
 
 const initialState: OrdersState = {
-  orders: [new Order()],
+  orders: [],
   error: null,
 };
 
