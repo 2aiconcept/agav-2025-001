@@ -27,14 +27,14 @@
   ],
   "orders": [
     {
-      "id": "d453",
       "unitPrice": 500,
       "nbOfDays": 2,
       "vat": 20,
       "state": "CONFIRMED",
       "type": "formation",
       "customer": "capgemini",
-      "comment": "un commentaire"
+      "comment": "un commentaire",
+      "id": "d453"
     },
     {
       "unitPrice": 500,
@@ -50,7 +50,7 @@
       "unitPrice": 500,
       "nbOfDays": 2,
       "vat": 20,
-      "state": "CANCELED",
+      "state": "OPTION",
       "type": "formation",
       "customer": "Atos",
       "comment": "un commentaire",

@@ -10,6 +10,7 @@
       "executor": "@angular-devkit/build-angular:browser",
       "outputs": ["{options.outputPath}"],
       "options": {
+        "allowedCommonJsDependencies": ["dayjs", "moment"],
         "outputPath": "dist/my-app",
         "index": "my-app/src/index.html",
         "main": "my-app/src/main.ts",
