@@ -35,4 +35,8 @@ export class OrdersService {
   public updateItem(item: Order): Observable<Order> {
     return this.http.put<Order>(`${this.url}/orders/${item.id}`, item);
   }
+
+  public getItemById(id: string): Observable<Order> {
+    return this.http.get<Order>(`${this.url}/orders/${id}`);
+  }
 }

@@ -5,11 +5,13 @@ import { Order } from '../models/order';
 export interface OrdersState {
   orders: Order[];
   error: string | null;
+  selectedOrder: Order | null;
 }
 
 const initialState: OrdersState = {
   orders: [],
   error: null,
+  selectedOrder: null,
 };
 
 export const ordersReducer = createReducer(
@@ -31,6 +33,14 @@ export const ordersReducer = createReducer(
     };
   }),
   on(OrdersActions.updateOrderFailure, (state, { error }) => ({
+    ...state,
+    error,
+  })),
+  on(OrdersActions.getOrderByIdSuccess, (state, { order }) => ({
+    ...state,
+    selectedOrder: order,
+  })),
+  on(OrdersActions.getOrderByIdFailure, (state, { error }) => ({
     ...state,
     error,
   }))

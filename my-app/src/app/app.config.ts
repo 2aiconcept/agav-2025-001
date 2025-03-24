@@ -25,7 +25,10 @@ registerLocaleData(localeFr);
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
-    provideRouter(appRoutes, withPreloading(PreloadAllModules)),
+    provideRouter(
+      appRoutes,
+      withPreloading(PreloadAllModules) //  Active PreloadAllModules par défaut
+    ),
     provideHttpClient(),
     provideStore({
       auth: authReducer,

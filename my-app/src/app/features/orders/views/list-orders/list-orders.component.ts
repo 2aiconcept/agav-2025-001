@@ -15,6 +15,7 @@ import { StateOrder } from '../../enums/state-order';
 import { FormsModule } from '@angular/forms';
 import { TotalPipe } from '../../../shared/pipes/total.pipe';
 import { StateDirective } from '../../../shared/directives/state.directive';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-list-orders',
@@ -37,6 +38,7 @@ export class ListOrdersComponent {
   title = 'List Orders';
   states = Object.values(StateOrder);
   private store = inject(Store);
+  private router = inject(Router);
   collection$: Observable<Order[]> = this.store.select(selectAllOrders);
   constructor() {
     this.store.dispatch(OrdersActions.getAllOrders());
@@ -54,6 +56,10 @@ export class ListOrdersComponent {
   trackByFn(index: number, item: Order): string {
     console.log(`Tracking: index=${index}, id=${item.id}`);
     return item.id; // Utilise `id` pour suivre les éléments
+  }
+
+  goToEdit(id: string) {
+    this.router.navigate(['orders', 'edit', id]);
   }
 
   // ngDoCheck() {

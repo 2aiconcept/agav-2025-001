@@ -34,3 +34,21 @@ export const updateOrderFailure = createAction(
   '[Orders] Update Order Failure',
   props<{ error: string }>()
 );
+
+// getOrderById (captured by effect)
+export const getOrderById = createAction(
+  '[Orders] Get Order By Id',
+  props<{ id: string }>()
+);
+
+// getOrderByIdSuccess (captured by reducer)
+export const getOrderByIdSuccess = createAction(
+  '[Orders] Get Order By Id Success',
+  props<{ order: Order }>()
+);
+
+// getOrderByIdFailure (captured by reducer)
+export const getOrderByIdFailure = createAction(
+  '[Orders] Get Order By Id Failure',
+  props<{ error: string }>()
+);

@@ -1,8 +1,7 @@
 import { Injectable, inject } from '@angular/core';
-import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
-import { mergeMap, map, catchError, of } from 'rxjs';
+import { mergeMap, map, catchError, of, switchMap } from 'rxjs';
 import { OrdersService } from '../services/orders.service';
 import * as OrdersActions from './orders.actions';
 
@@ -15,7 +14,7 @@ export class OrdersEffects {
   orders$ = createEffect(() =>
     this.actions$.pipe(
       ofType(OrdersActions.getAllOrders),
-      mergeMap(() =>
+      switchMap(() =>
         this.ordersService.collection.pipe(
           map((orders) =>
             OrdersActions.getAllOrdersSuccess({
@@ -33,15 +32,33 @@ export class OrdersEffects {
   changeState$ = createEffect(() =>
     this.actions$.pipe(
       ofType(OrdersActions.changeStateOrder),
-      mergeMap(({ order, state }) =>
+      switchMap(({ order, state }) =>
         this.ordersService.changeState(order, state).pipe(
           map((order) =>
             OrdersActions.updateOrderSuccess({
-              order
+              order,
             })
           ),
           catchError((error) =>
             of(OrdersActions.updateOrderFailure({ error: error.message }))
+          )
+        )
+      )
+    )
+  );
+
+  order$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(OrdersActions.getOrderById),
+      switchMap(({ id }) =>
+        this.ordersService.getItemById(id).pipe(
+          map((order) =>
+            OrdersActions.getOrderByIdSuccess({
+              order: order,
+            })
+          ),
+          catchError((error) =>
+            of(OrdersActions.getOrderByIdFailure({ error: error.message }))
           )
         )
       )
