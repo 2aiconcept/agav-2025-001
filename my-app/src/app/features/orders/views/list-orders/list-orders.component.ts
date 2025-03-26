@@ -21,8 +21,6 @@ import { Router } from '@angular/router';
   selector: 'app-list-orders',
   imports: [
     AsyncPipe,
-    NgIf,
-    NgFor,
     UpperCasePipe,
     CurrencyPipe,
     FormsModule,
@@ -50,12 +48,6 @@ export class ListOrdersComponent {
     const target = event.target as HTMLSelectElement;
     const state = target.value as StateOrder;
     this.store.dispatch(OrdersActions.changeStateOrder({ order: item, state }));
-  }
-
-  // Fonction `trackBy` pour identifier les éléments avec `id`
-  trackByFn(index: number, item: Order): string {
-    console.log(`Tracking: index=${index}, id=${item.id}`);
-    return item.id; // Utilise `id` pour suivre les éléments
   }
 
   goToEdit(id: string) {

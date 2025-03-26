@@ -30,7 +30,7 @@
       "unitPrice": 500,
       "nbOfDays": 2,
       "vat": 20,
-      "state": "CANCELED",
+      "state": "OPTION",
       "type": "formation",
       "customer": "capgemini",
       "comment": "un commentaire",

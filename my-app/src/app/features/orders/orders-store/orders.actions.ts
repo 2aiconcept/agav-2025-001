@@ -23,6 +23,12 @@ export const changeStateOrder = createAction(
   props<{ order: Order; state: StateOrder }>()
 );
 
+// updateOrder captured by effect to call api
+export const updateOrder = createAction(
+  '[Orders] Update Order',
+  props<{ order: Order }>()
+);
+
 // updateOrderSuccess captured by reducer to modify state
 export const updateOrderSuccess = createAction(
   '[Orders] Update Order Success',

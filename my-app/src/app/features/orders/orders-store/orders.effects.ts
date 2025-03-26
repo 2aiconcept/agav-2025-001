@@ -64,4 +64,22 @@ export class OrdersEffects {
       )
     )
   );
+
+  updateOrder$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(OrdersActions.updateOrder),
+      switchMap(({ order }) =>
+        this.ordersService.updateItem(order).pipe(
+          map((order) =>
+            OrdersActions.updateOrderSuccess({
+              order,
+            })
+          ),
+          catchError((error) =>
+            of(OrdersActions.updateOrderFailure({ error: error.message }))
+          )
+        )
+      )
+    )
+  );
 }

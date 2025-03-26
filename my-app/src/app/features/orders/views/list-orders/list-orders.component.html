@@ -5,7 +5,8 @@
   </div>
   <hr />
 </div>
-<div *ngIf="collection$ | async as collection">
+@if (collection$ | async; as collection) {
+<div>
   <table class="table table-hover table-bordered">
     <thead>
       <tr>
@@ -20,10 +21,8 @@
       </tr>
     </thead>
     <tbody>
-      <tr
-        *ngFor="let item of collection; trackBy: trackByFn"
-        [appState]="item.state"
-      >
+      @for (item of collection; track item.id) {
+      <tr [appState]="item.state">
         <td>{{ item.customer | uppercase }}</td>
         <td>{{ item.type }}</td>
         <td>{{ item.nbOfDays }}</td>
@@ -37,13 +36,11 @@
             aria-label="Default select example"
             (change)="changeState(item, $event)"
           >
-            <option
-              *ngFor="let state of states"
-              [ngValue]="state"
-              [selected]="state === item.state"
-            >
+            @for (state of states; track $index) {
+            <option [ngValue]="state" [selected]="state === item.state">
               {{ state }}
             </option>
+            }
           </select>
         </td>
         <td>
@@ -57,6 +54,8 @@
           <button type="button" class="btn btn-outline-danger">Delete</button>
         </td>
       </tr>
+      }
     </tbody>
   </table>
 </div>
+}

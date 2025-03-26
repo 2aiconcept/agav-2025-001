@@ -18,12 +18,15 @@ export class AuthEffects {
       ofType(AuthActions.login),
       switchMap(({ email, password }) =>
         this.authService.signIn({ email, password }).pipe(
-          map((user) =>
-            AuthActions.loginSuccess({
+          map((user) => {
+            // Enregistre le token et l'utilisateur dans le localStorage ICI (dans l'Effect)
+            localStorage.setItem('token', user.accessToken);
+            localStorage.setItem('user', JSON.stringify(user.user));
+            return AuthActions.loginSuccess({
               user: user.user,
               token: user.accessToken,
-            })
-          ),
+            });
+          }),
           catchError((error) =>
             of(AuthActions.loginFailure({ error: error.message }))
           )
@@ -83,5 +86,18 @@ export class AuthEffects {
         )
       )
     )
+  );
+
+  logout$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(AuthActions.logout),
+        tap(() => {
+          // Supprime le token et l'utilisateur du localStorage ici
+          localStorage.removeItem('token');
+          localStorage.removeItem('user');
+        })
+      ),
+    { dispatch: false } // Parce que mon effet Ne déclenche pas d'action en sortie
   );
 }
